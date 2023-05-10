@@ -19,7 +19,6 @@ export class CategoriaConProductoService {
 
   alltodo$():Observable<Categoria[]>{
     return this.todo$.asObservable();
-    console.log(this.todo$)
   }
   getuno$():Observable<Categoria>{
     return this.uno$.asObservable();
@@ -73,5 +72,11 @@ async Createarticulo(articulo:Producto){
     data: articulo
     };
   const response: HttpResponse = await CapacitorHttp.post(options);
+  this.uno=new Categoria()
+  this.uno.setvalues(response.data)
+  this.uno$.next(this.uno)
+  this.todo.push(this.uno)
+  this.todo$.next(this.todo)
+  return response.data
  };
 }

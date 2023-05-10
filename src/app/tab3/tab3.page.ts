@@ -10,7 +10,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page implements OnInit {
 public nombre!:string
-public correo!:string
   constructor(
     private route:Router,
     private alertController: AlertController
@@ -18,8 +17,9 @@ public correo!:string
 
   async ngOnInit() {
     const { value } = await Preferences.get({ key: 'user' });
-    if(value)
+    if(value){
     this.nombre=value
+    }
 
   }
 
@@ -27,6 +27,7 @@ public correo!:string
 async salir(){
   await Preferences.remove({ key: 'token' });
   await Preferences.remove({ key: 'user' });
+  this.nombre=""
   const alert = await this.alertController.create({
     header: 'Mensaje',
     message: 'Vuelve pronto',

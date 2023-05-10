@@ -31,6 +31,7 @@ export class Tab4Page implements OnInit {
   addCategoria(){
     this.todoService.Createcategoria(this.categoria.nombre)
     this.presentAlert("Registrada")
+    this.todoService.all().then()
   }
   addArticulo(){
     this.producto.cantidad=0
@@ -38,6 +39,7 @@ export class Tab4Page implements OnInit {
     console.log(this.producto)
     this.todoService.Createarticulo(this.producto)
     this.presentAlert("Registrado")
+    this.todoService.all().then()
   }
 
   async presentAlert(msn:string) {

@@ -10,7 +10,7 @@ import { UserService } from '../servicios/user/user.service';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit, OnDestroy{
+export class Tab2Page implements OnInit{
   facturas$!: Observable<Factura[]>;
   isModalOpen = false;
   isAlertOpen = false;
@@ -27,7 +27,7 @@ export class Tab2Page implements OnInit, OnDestroy{
       message: 'Factura eliminada con exito!',
       buttons: ['OK'],
     });
-
+    this.facturasService.allFacturas().then()
     await alert.present();
 
   }
@@ -40,16 +40,9 @@ export class Tab2Page implements OnInit, OnDestroy{
     private alertController: AlertController
   ) {}
 
-  ngOnDestroy(): void {
-    this.facturaSubscription.unsubscribe();
-    console.log("eliminó")
-  }
-
   ngOnInit(): void {
-    this.facturas$ = this.facturasService.allFacturas$();
    this.facturaSubscription=this.facturasService.allFacturas$().subscribe((res:Factura[])=>{
       this.facturas=res;
-      console.log(this.facturas)
     })
         this.facturasService.allFacturas().then()
   }

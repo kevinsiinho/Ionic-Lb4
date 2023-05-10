@@ -1,0 +1,3 @@
+Uso mysqli para guardar productos y categorias
+-->factura.sql
+--------------------------------------------

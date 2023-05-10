@@ -116,7 +116,7 @@ async allFacturas(): Promise<Factura[]>{
           this.factura=new Factura();
           this.factura.setValues(response.data)
           this.factura$.next(this.factura)
-        return this.facturas$
+        return this.facturas
   }
 
 
